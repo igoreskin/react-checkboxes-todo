@@ -2,6 +2,116 @@
   text-align: center;
 }
 
+.linethrough {
+  text-decoration: line-through;
+  display: inline;
+  margin-left: 10px;
+}
+
+.plain {
+  display: inline;
+  margin-left: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+.main-container {
+  margin: 30px auto;
+  width: 700px;
+  background-color: #dff9fb;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.form {
+  margin: 20px auto;
+}
+
+.todos {
+  text-align: left;
+  margin-left: 20%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.archived-todos {
+  text-align: left;
+  margin-left: 20%;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.todo {
+  margin-bottom: 15px;
+  width: 80%;
+  position: relative;
+}
+
+.input {
+  width: 40%;
+  height: 22px;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 0.2px solid gray;
+  overflow: hidden;
+}
+
+.submit {
+  height: 26px;
+  width: 14%;
+  background-color: #4cd137;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s
+}
+
+.submit:hover {
+  background-color: #006266;
+}
+
+.delete {
+  height: 26px;
+  position: absolute;
+  right: 0px;
+  width: 18%;
+  color: white;
+  background-color: #e84118;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s
+}
+
+.delete:hover {
+  background-color: #b33939;
+  transition: all 0.2s ease-in-out;
+}
+
+.archive {
+  height: 26px;
+  position: absolute;
+  right: 90px;
+  width: 18%;
+  color: white;
+  background-color: #00a8ff;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.3s
+}
+
+.archive:hover {
+  background-color: #0652DD;
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
