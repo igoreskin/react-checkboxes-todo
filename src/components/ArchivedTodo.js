@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const ArchivedTodo = (props) => {
 
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked)
-  }
-
   const deleteTodo = () => {
-    // console.log(props)
     props.delete(props.id)
   }
 

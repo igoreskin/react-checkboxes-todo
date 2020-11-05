@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { v4 as uuidv4 } from "uuid";
+import { Types } from '../types';
 import Todo from "./Todo";
 import ArchivedTodo from './ArchivedTodo';
 import TodoContext from '../context';
@@ -10,33 +11,21 @@ export const MainContainer = () => {
 
   const inputElement = useRef(null);
 
-  const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState('');
 
-  const [archivedTodos, setArchivedTodos] = useState([]);
-  const [deletedTodos, setDeletedTodos] = useState([]);
-
   const archiveTodo = (id) => { 
-    if (archivedTodos.length < 5) {
-      const toArchive = todos.find(el => el.id === id);
-      const index = todos.indexOf(toArchive);
-      todos.splice(index, 1)
-      setArchivedTodos([ ...archivedTodos, toArchive ])
+    if (state.archivedTodos.length < 5) {
+      const toArchive = state.todos.find(el => el.id === id);
+      dispatch({ type: Types.ARCHIVE_TODO, payload: toArchive });
     }
   }
 
   const deleteTodo = (id) => {
-    const toDelete = todos.find(el => el.id === id);
-    const index = todos.indexOf(toDelete);
-    todos.splice(index, 1)
-    setDeletedTodos([...deletedTodos, toDelete])
+    dispatch({ type: Types.DELETE_TODO, payload: id });
   }
 
   const deleteArchivedTodo = (id) => {
-    const toDelete = archivedTodos.find(el => el.id === id);
-    const index = archivedTodos.indexOf(toDelete);
-    archivedTodos.splice(index, 1)
-    setDeletedTodos([...deletedTodos, toDelete])
+    dispatch({ type: Types.DELETE_ARCHIVED_TODO, payload: id });
   }
 
   const onInputChange = e => {
@@ -46,16 +35,16 @@ export const MainContainer = () => {
   const handleSubmit = e => {
     e.preventDefault()
     const id = uuidv4();
-    todos.length < 10 && todo.length > 0 && setTodos([ ...todos, { text: todo, id: id }]);
+    state.todos.length < 10 && todo.length > 0 && dispatch({ type: Types.CREATE_TODO, payload: { text: todo, id: id }});
     setTodo('');
     inputElement.current.focus();
   }
 
-  const renderTodos = todos.map(
+  const renderTodos = state.todos.map(
     todo => <Todo content={todo.text} id={todo.id} key={todo.id} archive={archiveTodo} delete={deleteTodo} />
   )
 
-  const renderArchivedTodos = archivedTodos.map(
+  const renderArchivedTodos = state.archivedTodos.map(
     todo => <ArchivedTodo content={todo.text} id={todo.id} key={todo.id} delete={deleteArchivedTodo} />
   )
 

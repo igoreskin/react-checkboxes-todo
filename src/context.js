@@ -1,7 +1,8 @@
 import React from 'react';
 
 const TodoContext = React.createContext({
-  todos: []
+  todos: [],
+  archivedTodos: []
 });
 
 export default TodoContext;
