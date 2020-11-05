@@ -1,9 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Todo from "./Todo";
 import ArchivedTodo from './ArchivedTodo';
+import TodoContext from '../context';
 
 export const MainContainer = () => {
+
+  const { state, dispatch } = useContext(TodoContext);
 
   const inputElement = useRef(null);
 
